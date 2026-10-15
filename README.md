@@ -1,85 +1,84 @@
-# Kaido Motors España: demanda, stock y beneficio
+# Kaido Motors España · Plan de producción A013
 
-Caso de uso de la asignatura **Simulación de Sistemas Logísticos** (Universidad Alfonso X el Sabio).
-Autores del caso: Jacinto Velasco y Javier Goikoetxea. Profesor: Javier Goikoetxea.
+Resolución del caso **Kaido Motors España: demanda, stock y beneficio** de la asignatura *Simulación de Sistemas Logísticos* (Universidad Alfonso X el Sabio, curso 2026/27).
 
-Este repositorio contiene el enunciado y los datos del caso. Es un repositorio de **solo lectura**: clonadlo o descargadlo y trabajad en vuestro propio entorno.
+Autor: Álvaro González Fernández · 4º de Ingeniería Matemática.
 
-> Caso basado en uno real. Los datos y los nombres se han modificado y camuflado para su uso académico. **Uso exclusivamente docente: no los difundáis fuera del curso.**
+## Objetivo
 
-## Contenido
+Proponer cuántos coches fabricar cada mes de A013 en cada uno de los siete segmentos de Kaido. Para ello se construye un modelo de demanda mensual y se simula el año con tres escenarios (pesimista, central y optimista), midiendo ventas, stock, transfers, gasto comercial y margen.
+
+## Resultados principales
+
+| | Pesimista | Central | Optimista |
+|---|---|---|---|
+| Coches vendidos | 18.878 | 22.613 | 27.678 |
+| Coches fabricados (llegadas a la red) | 16.617 | 19.379 | 22.804 |
+| Stock medio en la red (meses de venta) | 1,4 | 1,1 | 0,8 |
+| Margen de la marca, CVP (M€) | 4,3 | 81,8 | 107,4 |
+
+- **Plan de partida:** 20.254 coches en A013, con producción del compacto parada de marzo a agosto y un pedido alto de SUV pequeño en marzo.
+- **Mercado A013:** −14 % frente a A012, por la caída de la confianza del consumidor y la devolución de las compras adelantadas.
+- **Riesgo principal:** la prima europea de CO₂, que costaría ≈67 M€ con las ventas del escenario central.
+
+El resumen ejecutivo y la presentación están en `entregables/`.
+
+## Estructura
 
 ```
-sim-kaido-motors/
-├── README.md
-├── requirements.txt
-├── .gitattributes
-├── .gitignore
-├── docs/
-│   └── kaido-motors-case-study.pdf    # Enunciado del caso
-├── examples/
-│   ├── annex4_demand_baseline.ipynb   # Ejemplo del Anexo 4 en notebook (con gráficos)
-│   └── annex4_demand_baseline.py      # Mismo ejemplo en script (sin gráficos)
-└── data/
-    ├── ventas_mensual.csv             # Ventas de Kaido por mes, segmento y canal (A003-A012)
-    ├── stock_mensual.csv              # Stock de la red por mes y segmento (A009-A012)
-    ├── mercado_mensual.csv            # Mercado por mes, segmento y canal (A001-A012)
-    ├── segmentos.csv                  # Ficha de cada uno de los siete segmentos
-    ├── codigos.csv                    # Códigos de producto y su agrupación por segmento
-    ├── macro_mensual.csv              # Variables económicas, sucesos y calendario (A001-A012)
-    └── calendario_A013.csv            # Días laborables y Semana Santa de A013
+├── run.py                     Pipeline completo: previsión, plan y simulación → salidas/
+├── src/
+│   ├── datos.py               Carga de los CSV y construcción de la demanda limpia
+│   ├── demanda.py             Modelo de mercado (SARIMAX), peso de segmento y cuota
+│   ├── simulacion.py          Escenarios, política de pedidos y simulación Monte Carlo
+│   └── graficos.py            Estilo común de los gráficos
+├── notebooks/
+│   ├── 01_exploracion_demanda.ipynb   Demanda real de A012: automatriculaciones, adelantos y roturas de stock
+│   ├── 02_modelo_demanda.ipynb        Selección de variables, modelo y validación con A012
+│   └── 03_simulacion_A013.ipynb       Escenarios, plan de producción y Tabla 5
+├── informe/
+│   ├── generar_resumen.py     Genera el resumen ejecutivo (HTML → PDF)
+│   └── generar_presentacion.py
+├── salidas/                   Tablas (plan, previsión, Tabla 5) y figuras
+├── entregables/               Resumen ejecutivo y presentación en PDF
+└── requirements.txt
 ```
 
-La descripción de cada variable está en el **Anexo 5** del enunciado.
+## Cómo reproducirlo
 
-## Puesta en marcha
-
-Necesitáis Python 3.10 o superior.
+Requiere Python 3.10 o superior.
 
 ```bash
-git clone <URL-del-repositorio>
-cd sim-kaido-motors
-
 python -m venv .venv
-source .venv/bin/activate        # En Windows: .venv\Scripts\activate
+.venv\Scripts\activate          # Linux/macOS: source .venv/bin/activate
 pip install -r requirements.txt
+python run.py
 ```
 
-Ejecutad siempre el código **desde la raíz del repositorio**, para que la ruta `data/` se resuelva bien.
+Los datos del caso son material docente de la asignatura y **no se incluyen en el repositorio**. Para ejecutar el código hay que copiar los siete CSV del repositorio del curso en `data/`. Todas las cifras se reproducen con semilla fija (13).
 
-## Cómo leer los CSV
+Para regenerar los PDF:
 
-Los ficheros están separados por comas. Al leerlos hay que indicar que **solo las celdas vacías son datos que faltan**. Si no, pandas convierte el código de modelo `NA` en un valor nulo (el Anexo 4 del enunciado lo explica):
-
-```python
-import pandas as pd
-
-def leer(fichero):
-    return pd.read_csv("data/" + fichero, keep_default_na=False, na_values=[""])
-
-mercado = leer("mercado_mensual.csv")
-macro = leer("macro_mensual.csv")
+```bash
+python informe/generar_resumen.py
+python informe/generar_presentacion.py
+# imprimir informe/*.html a PDF (por ejemplo, con Chrome: --headless --print-to-pdf)
 ```
 
-## Código de ejemplo
+## Metodología
 
-El Anexo 4 del enunciado está disponible en dos formatos con el mismo código y las mismas secciones:
+1. **Demanda real.** Ventas menos automatriculaciones. Los meses con compras adelantadas por cambios de normativa y los meses en que la red se quedó sin coches se marcan aparte.
+2. **Previsión.** `demanda = mercado total × peso del segmento × cuota de Kaido`.
+   - **Mercado total:** SARIMAX sobre el logaritmo, con calendario, planes de ayuda, subidas del IVA y dos variables económicas (confianza del consumidor y paro) con tres meses de retraso.
+   - **Peso del segmento:** peso del último año corregido con la tendencia de los dos últimos.
+   - **Cuota:** media de los últimos doce meses.
+   - **Validación:** entrenando hasta A011 y prediciendo A012.
+3. **Plan mensual.** Cada mes se decide la llegada de t+3 con `pedido = máx(0, demanda prevista + stock de seguridad − stock previsto)`. El stock de seguridad de cada segmento sale del ratio crítico del problema del *newsvendor*.
+4. **Simulación.** 1.000 años por escenario, con error de demanda (sesgo de nivel y ruido mensual) calibrado en la validación, revisión mensual de la previsión, transfers cuando son rentables y seguimiento de la antigüedad del stock (FIFO).
 
-- **`examples/annex4_demand_baseline.ipynb`**: notebook **con visualización** (serie, descomposición y comparación con A012).
-- **`examples/annex4_demand_baseline.py`**: script **sin visualización**.
+## Limitaciones
 
-Prepara el mercado del SUV medio, lo separa en tendencia, estacionalidad y resto, y ajusta un modelo SARIMAX con dos variables económicas y el calendario. Entrena hasta A011 y compara la previsión con lo que pasó en A012. Es un punto de partida, no la solución del caso.
-
-## Los años del caso
-
-Los años reales se han sustituido por códigos: **A001** es el primer año con datos y **A012** el último cerrado. **A013** es el año que hay que planificar y no tiene datos, salvo el calendario. Para usar librerías de series temporales, el Anexo 4 propone tratar A001 como el año ficticio 2001, A002 como 2002, y así sucesivamente.
-
-Los días laborables y la Semana Santa **no se calculan a partir de la fecha ficticia**: se toman de `macro_mensual.csv` y, para A013, de `calendario_A013.csv`.
-
-## Aviso importante sobre Excel
-
-**No abráis ni guardéis los CSV con Excel.** Puede cambiar el separador (coma por punto y coma), los decimales y el código de modelo `NA` (que convierte en celda vacía). Si queréis echarles un vistazo, usad un editor de texto o pandas.
-
-## Nota de uso
-
-Material de uso docente, exclusivo para el alumnado del curso. No se permite su publicación ni su redistribución sin autorización de los autores.
+- Cada segmento se trata como un único producto.
+- Se supone que los transfers están siempre disponibles.
+- Las llegadas en camino de enero y febrero se estiman con el *wholesale* de octubre a diciembre de A012.
+- El modelo se ha validado con un solo año.

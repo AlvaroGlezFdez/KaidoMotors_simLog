@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Proyecto Kaido Motors -------------------------------------------------
+# Material del curso (uso docente, no se redistribuye): enunciado, datos y ejemplo
+docs/
+data/
+examples/
+# Notas personales de trabajo
+notas/
+# Ficheros intermedios que se regeneran con informe/generar_*.py
+informe/*.html
+informe/figuras_resumen/
+informe/figuras_presentacion/
+# El ZIP del entregable lleva los datos del curso: no se sube
+entregables/*.zip

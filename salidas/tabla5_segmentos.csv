@@ -1,0 +1,85 @@
+,,Pesimista,Central,Optimista
+MSUV,Coches vendidos (unidades),5659.1,7163.3,8910.0
+MSUV,Coches fabricados / llegadas (unidades),5328.7,6658.4,7845.2
+MSUV,Stock medio en la red (coches),352.4,350.6,266.0
+MSUV,Stock medio en la red (meses de venta),0.8,0.6,0.4
+MSUV,Coches con más de 90 días a fin de año,0.0,0.0,0.0
+MSUV,Coste del stock para la marca (€),253716.8,252410.4,191520.0
+MSUV,Ventas perdidas (coches),751.8,0.0,0.0
+MSUV,Ventas perdidas (€ de CVP),941019.4,0.0,0.0
+MSUV,Transfers (coches),0.0,214.9,709.0
+MSUV,Transfers (€ de coste),0.0,334504.6,1144389.9
+MSUV,"Gasto comercial, VM (€)",10776009.4,13610874.5,16916179.9
+MSUV,"Margen de la marca, CVP (€)",7031516.6,41799516.8,53844486.1
+SSUV,Coches vendidos (unidades),5241.8,6338.9,7949.4
+SSUV,Coches fabricados / llegadas (unidades),5409.9,6005.7,7068.3
+SSUV,Stock medio en la red (coches),230.1,218.2,154.8
+SSUV,Stock medio en la red (meses de venta),0.6,0.4,0.2
+SSUV,Coches con más de 90 días a fin de año,0.0,0.0,0.0
+SSUV,Coste del stock para la marca (€),165704.3,157136.3,111477.6
+SSUV,Ventas perdidas (coches),360.4,0.0,0.0
+SSUV,Ventas perdidas (€ de CVP),0.0,0.0,0.0
+SSUV,Transfers (coches),0.0,518.0,1016.7
+SSUV,Transfers (€ de coste),0.0,500727.1,1030640.8
+SSUV,"Gasto comercial, VM (€)",10358318.7,12525806.5,15707953.7
+SSUV,"Margen de la marca, CVP (€)",-1709775.6,17609501.0,23551829.8
+C,Coches vendidos (unidades),2444.4,2794.0,3174.4
+C,Coches fabricados / llegadas (unidades),1491.6,1642.3,1868.4
+C,Stock medio en la red (coches),772.4,728.2,682.6
+C,Stock medio en la red (meses de venta),4.1,3.4,2.8
+C,Coches con más de 90 días a fin de año,51.8,27.6,5.4
+C,Coste del stock para la marca (€),485804.7,476780.4,462884.4
+C,Ventas perdidas (coches),136.9,0.0,0.0
+C,Ventas perdidas (€ de CVP),0.0,0.0,0.0
+C,Transfers (coches),0.0,187.9,341.2
+C,Transfers (€ de coste),0.0,137979.2,270295.0
+C,"Gasto comercial, VM (€)",6645894.2,7403111.4,8234538.0
+C,"Margen de la marca, CVP (€)",-3500125.1,2718447.4,4068058.5
+B,Coches vendidos (unidades),1008.1,1115.9,1308.9
+B,Coches fabricados / llegadas (unidades),936.5,1047.0,1243.8
+B,Stock medio en la red (coches),50.1,46.9,40.4
+B,Stock medio en la red (meses de venta),0.6,0.5,0.4
+B,Coches con más de 90 días a fin de año,0.0,0.0,0.0
+B,Coste del stock para la marca (€),36094.8,33779.2,29111.4
+B,Ventas perdidas (coches),129.2,154.8,291.4
+B,Ventas perdidas (€ de CVP),0.0,19344.1,96642.3
+B,Transfers (coches),0.0,0.0,0.0
+B,Transfers (€ de coste),0.0,0.0,0.0
+B,"Gasto comercial, VM (€)",1731216.6,1916198.2,2247388.1
+B,"Margen de la marca, CVP (€)",-2762443.6,139381.3,434039.8
+CSUV,Coches vendidos (unidades),3848.0,4451.9,5488.9
+CSUV,Coches fabricados / llegadas (unidades),2880.3,3407.8,4099.8
+CSUV,Stock medio en la red (coches),665.6,621.6,561.7
+CSUV,Stock medio en la red (meses de venta),2.2,1.8,1.3
+CSUV,Coches con más de 90 días a fin de año,6.0,11.5,1.4
+CSUV,Coste del stock para la marca (€),474347.4,446335.2,404221.2
+CSUV,Ventas perdidas (coches),0.0,0.0,0.0
+CSUV,Ventas perdidas (€ de CVP),0.0,0.0,0.0
+CSUV,Transfers (coches),258.7,376.0,717.7
+CSUV,Transfers (€ de coste),293400.0,464261.3,934380.5
+CSUV,"Gasto comercial, VM (€)",9315335.7,10727540.6,13156091.4
+CSUV,"Margen de la marca, CVP (€)",4854002.7,16294163.4,21640460.8
+MD,Coches vendidos (unidades),341.8,370.8,418.4
+MD,Coches fabricados / llegadas (unidades),222.8,247.4,277.0
+MD,Stock medio en la red (coches),45.6,43.3,40.4
+MD,Stock medio en la red (meses de venta),1.7,1.5,1.2
+MD,Coches con más de 90 días a fin de año,0.0,0.0,0.0
+MD,Coste del stock para la marca (€),29103.8,27731.1,25942.9
+MD,Ventas perdidas (coches),0.0,0.0,0.0
+MD,Ventas perdidas (€ de CVP),0.0,0.0,0.0
+MD,Transfers (coches),11.2,16.8,32.0
+MD,Transfers (€ de coste),15815.1,25379.0,50445.3
+MD,"Gasto comercial, VM (€)",1261843.6,1362459.8,1528308.6
+MD,"Margen de la marca, CVP (€)",428986.8,1416078.4,1719996.7
+S,Coches vendidos (unidades),335.1,377.7,427.9
+S,Coches fabricados / llegadas (unidades),346.8,370.7,401.0
+S,Stock medio en la red (coches),16.0,13.8,11.3
+S,Stock medio en la red (meses de venta),0.6,0.5,0.3
+S,Coches con más de 90 días a fin de año,0.0,0.0,0.0
+S,Coste del stock para la marca (€),11525.3,9969.0,8154.4
+S,Ventas perdidas (coches),13.9,0.0,0.0
+S,Ventas perdidas (€ de CVP),329.1,0.0,0.0
+S,Transfers (coches),0.0,19.3,37.2
+S,Transfers (€ de coste),0.0,26445.1,53038.3
+S,"Gasto comercial, VM (€)",633576.5,713554.4,807947.6
+S,"Margen de la marca, CVP (€)",6676.5,1843905.4,2190788.6
