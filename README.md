@@ -21,41 +21,46 @@ Proponer cuántos coches fabricar cada mes de A013 en cada uno de los siete segm
 - **Mercado A013:** −14 % frente a A012, por la caída de la confianza del consumidor y la devolución de las compras adelantadas.
 - **Riesgo principal:** la prima europea de CO₂, que costaría ≈67 M€ con las ventas del escenario central.
 
-El resumen ejecutivo y la presentación están en `entregables/`.
+El resumen ejecutivo y la presentación están en `Resumen y presentación Comité/`.
 
 ## Estructura
 
 ```
-├── run.py                     Pipeline completo: previsión, plan y simulación → salidas/
-├── src/
-│   ├── datos.py               Carga de los CSV y construcción de la demanda limpia
-│   ├── demanda.py             Modelo de mercado (SARIMAX), peso de segmento y cuota
-│   ├── simulacion.py          Escenarios, política de pedidos y simulación Monte Carlo
-│   └── graficos.py            Estilo común de los gráficos
-├── notebooks/
-│   ├── 01_exploracion_demanda.ipynb   Demanda real de A012: automatriculaciones, adelantos y roturas de stock
-│   ├── 02_modelo_demanda.ipynb        Selección de variables, modelo y validación con A012
-│   └── 03_simulacion_A013.ipynb       Escenarios, plan de producción y Tabla 5
-├── informe/
-│   ├── generar_resumen.py     Genera el resumen ejecutivo (HTML → PDF)
-│   └── generar_presentacion.py
-├── salidas/                   Tablas (plan, previsión, Tabla 5) y figuras
-├── entregables/               Resumen ejecutivo y presentación en PDF
-└── requirements.txt
+├── Enlace al repositorio de GitHub.md
+├── Resumen y presentación Comité/
+│   ├── Resumen_ejecutivo_KaidoMotors_A013.pdf     Entregable 1: resumen ejecutivo (2 páginas)
+│   └── Presentacion_KaidoMotors_A013.pdf          Entregable 3: presentación de 10 minutos
+└── Código y modelo/                               Entregable 2: código y datos
+    ├── run.py                     Pipeline completo: previsión, plan y simulación → salidas/
+    ├── requirements.txt
+    ├── src/
+    │   ├── datos.py               Carga de los CSV y construcción de la demanda limpia
+    │   ├── demanda.py             Modelo de mercado (SARIMAX), peso de segmento y cuota
+    │   ├── simulacion.py          Escenarios, política de pedidos y simulación Monte Carlo
+    │   └── graficos.py            Estilo común de los gráficos
+    ├── notebooks/
+    │   ├── 01_exploracion_demanda.ipynb   Demanda real de A012: automatriculaciones, adelantos y roturas de stock
+    │   ├── 02_modelo_demanda.ipynb        Selección de variables, modelo y validación con A012
+    │   └── 03_simulacion_A013.ipynb       Escenarios, plan de producción y Tabla 5
+    ├── informe/
+    │   ├── generar_resumen.py     Genera el resumen ejecutivo (HTML → PDF)
+    │   └── generar_presentacion.py
+    ├── salidas/                   Tablas (plan, previsión, Tabla 5) y figuras
+    └── data/                      Datos del caso (no incluidos en el repositorio)
 ```
 
 ## Cómo reproducirlo
 
-Requiere Python 3.10 o superior.
+Requiere Python 3.10 o superior. Desde la carpeta `Código y modelo/`:
 
 ```bash
 python -m venv .venv
-.venv\Scripts\activate          # Linux/macOS: source .venv/bin/activate
+.venv\Scriptsctivate          # Linux/macOS: source .venv/bin/activate
 pip install -r requirements.txt
 python run.py
 ```
 
-Los datos del caso son material docente de la asignatura y **no se incluyen en el repositorio**. Para ejecutar el código hay que copiar los siete CSV del repositorio del curso en `data/`. Todas las cifras se reproducen con semilla fija (13).
+Los datos del caso son material docente de la asignatura y **no se incluyen en el repositorio**. Para ejecutar el código hay que copiar los siete CSV del repositorio del curso en `Código y modelo/data/`. Todas las cifras se reproducen con semilla fija (13).
 
 Para regenerar los PDF:
 
